@@ -14,6 +14,70 @@
     .entry-toggle { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; }
     .entry-toggle:focus-visible { outline: 2px solid var(--gold, #D1A147); outline-offset: 3px; }
     .entry { scroll-margin-top: 100px; }
+
+
+    /* =====================================================
+       VÍDEO INTRODUTÓRIO — layout e controles
+       O arquivo MP4 deve ficar ao lado deste index.html.
+       ===================================================== */
+    .intro-video-section {
+      margin: 50px 0 64px;
+    }
+    .intro-video-header { margin-bottom: 22px; }
+    .intro-video-header h2 {
+      margin: 10px 0 12px;
+      font-family: var(--font-display, Georgia, serif);
+      font-size: clamp(27px, 3.2vw, 38px);
+      line-height: 1.2;
+      color: var(--ink, #231E19);
+    }
+    .intro-video-header p:last-child {
+      max-width: 620px;
+      color: var(--muted, #6E6557);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+    .intro-video-frame {
+      overflow: hidden;
+      border-radius: 13px;
+      background: #191C18;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    }
+    .intro-video-frame video {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+    }
+    .intro-video-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 12px 16px;
+      color: #F8F3E8;
+      font-size: 12px;
+    }
+    .intro-video-audio {
+      background: #D1A147;
+      border: 0;
+      border-radius: 6px;
+      padding: 10px 14px;
+      color: #191C18;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .intro-video-audio:hover { background: #E1BA6B; }
+    .intro-video-audio:focus-visible {
+      outline: 3px solid #F8F3E8;
+      outline-offset: 3px;
+    }
+    @media (max-width: 700px) {
+      .intro-video-section { margin: 35px 0 48px; }
+      .intro-video-toolbar { font-size: 11px; }
+    }
   </style>
 </head>
 <body>
@@ -58,7 +122,7 @@
         <span>MEMÓRIAS / CONSCIÊNCIA NEGRA / ALUNOS: REILLY, EVERTON E LUIS FELIPE </span>
         <div class="account">
           <span>Nosso diário</span>
-          <a class="avatar" href="sobre.html" aria-label="Conhecer o grupo">
+          <a class="avatar" href="index.html" aria-label="Conhecer o grupo">
             <img src="image/grupo.png" alt="Grupo do projeto">
           </a>
         </div>
@@ -81,8 +145,54 @@
           <div class="intro-card">
             <p class="eyebrow">SOBRE ESTE DIÁRIO</p>
             <h1 class="intro-title">Memórias que constroem histórias.</h1>
-            <p class="intro-description">Este diário de bordo integra um projeto pedagógico de caráter avaliativo, desenvolvido durante a unidade letiva. Sua finalidade é registrar e descrever detalhadamente as experiências vivenciadas ao longo do evento, destacando os aprendizados, as reflexões e a valorização da história, da cultura e do protagonismo da população negra.</p>
+            <p class="intro-description">Este diário de bordo integra um projeto pedagógico de caráter avaliativo, desenvolvido durante a unidade letiva pelos alunos: Reilly, Everton e Luis Felipe, da turma EI-31, do Instituto Federal da Bahia (IFBA).
+
+O projeto tem como objetivo registrar e descrever as experiências vivenciadas durante o evento relacionado à Consciência Negra, reunindo relatos das atividades, aprendizados, observações e reflexões dos integrantes do grupo.
+
+<br><br>Por meio desses registros, buscamos documentar nossa participação nas atividades propostas, aprofundar a compreensão sobre as questões étnico-raciais e destacar a importância da história, da cultura, da ancestralidade e do protagonismo da população negra na formação da sociedade brasileira.</p>
             <a class="intro-anchor" href="#registros">Explorar os registros <span aria-hidden="true">↓</span></a>
+          </div>
+        </section>
+
+
+        <!-- =================================================
+             VÍDEO INTRODUTÓRIO
+             Coloque o arquivo "introd.mp4" na mesma pasta do index.html.
+             O vídeo inicia sem som para permitir autoplay e fica em loop.
+             ================================================= -->
+        <section id="video-introducao" class="intro-video-section" aria-labelledby="intro-video-title">
+          <div class="intro-video-header">
+            <p class="eyebrow">NOSSA HISTÓRIA</p>
+            <h2 id="intro-video-title">Memórias que permanecem.</h2>
+            <p>Uma introdução à nossa jornada de aprendizado, memória e valorização da cultura negra.</p>
+          </div>
+
+          <div class="intro-video-frame">
+            <video
+              id="video-introd"
+              autoplay
+              muted
+              loop
+              playsinline
+              controls
+              preload="metadata"
+              aria-label="Vídeo introdutório do Diário de Bordo Raízes e Vozes"
+            >
+              <source src="image/introd.mp4" type="video/mp4">
+              Seu navegador não suporta a reprodução de vídeos MP4.
+            </video>
+
+            <div class="intro-video-toolbar">
+              <span>Raízes &amp; Vozes · Diário de Bordo · EI-31</span>
+              <button
+                type="button"
+                id="intro-video-audio"
+                class="intro-video-audio"
+                aria-pressed="false"
+              >
+                🔇 Ativar áudio
+              </button>
+            </div>
           </div>
         </section>
 
@@ -411,6 +521,31 @@ Talvez a beleza da escrevivência esteja justamente nisso: transformar aquilo qu
         if (aberto) botao.closest('.entry').scrollIntoView({ block: 'start' });
       });
     });
+  </script>
+
+  <!-- Controle independente do áudio do vídeo introdutório. -->
+  <script>
+    (() => {
+      const video = document.getElementById('video-introd');
+      const audioButton = document.getElementById('intro-video-audio');
+
+      if (!video || !audioButton) return;
+
+      function updateAudioButton() {
+        const soundOn = !video.muted;
+        audioButton.textContent = soundOn ? '🔊 Desativar áudio' : '🔇 Ativar áudio';
+        audioButton.setAttribute('aria-pressed', String(soundOn));
+      }
+
+      audioButton.addEventListener('click', () => {
+        video.muted = !video.muted;
+        updateAudioButton();
+      });
+
+      // Mantém o botão sincronizado com o controle de volume nativo.
+      video.addEventListener('volumechange', updateAudioButton);
+      updateAudioButton();
+    })();
   </script>
 </body>
 </html>
