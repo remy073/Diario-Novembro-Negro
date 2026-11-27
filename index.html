@@ -2,6 +2,8 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <!-- Permite ao YouTube identificar a origem do site ao incorporar o vídeo. -->
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#191c18">
   <title>Raízes & Vozes | Diário de Bordo</title>
@@ -17,13 +19,15 @@
 
 
     /* =====================================================
-       VÍDEO INTRODUTÓRIO — layout e controles
-       O arquivo MP4 deve ficar ao lado deste index.html.
+       VÍDEO INTRODUTÓRIO DO YOUTUBE
+       Vídeo publicado no YouTube: FTvCsljDFso.
        ===================================================== */
     .intro-video-section {
       margin: 50px 0 64px;
     }
-    .intro-video-header { margin-bottom: 22px; }
+    .intro-video-header {
+      margin-bottom: 22px;
+    }
     .intro-video-header h2 {
       margin: 10px 0 12px;
       font-family: var(--font-display, Georgia, serif);
@@ -38,47 +42,21 @@
       line-height: 1.75;
     }
     .intro-video-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
       overflow: hidden;
       border-radius: 13px;
       background: #191C18;
       box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
     }
-
-    
-    .intro-video-frame video {
+    .intro-video-frame iframe {
       display: block;
       width: 100%;
-      height: auto;
-      aspect-ratio: 16 / 9;
-      object-fit: contain;
-    }
-    .intro-video-toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      padding: 12px 16px;
-      color: #F8F3E8;
-      font-size: 12px;
-    }
-    .intro-video-audio {
-      background: #D1A147;
+      height: 100%;
       border: 0;
-      border-radius: 6px;
-      padding: 10px 14px;
-      color: #191C18;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .intro-video-audio:hover { background: #E1BA6B; }
-    .intro-video-audio:focus-visible {
-      outline: 3px solid #F8F3E8;
-      outline-offset: 3px;
     }
     @media (max-width: 700px) {
       .intro-video-section { margin: 35px 0 48px; }
-      .intro-video-toolbar { font-size: 11px; }
     }
   </style>
 </head>
@@ -158,9 +136,16 @@ O projeto tem como objetivo registrar e descrever as experiências vivenciadas d
 
 
         <!-- =================================================
-             VÍDEO INTRODUTÓRIO
-             Coloque o arquivo "introd.mp4" na mesma pasta do index.html.
-             O vídeo inicia sem som para permitir autoplay e fica em loop.
+             VÍDEO INTRODUTÓRIO — YOUTUBE
+
+             1. Publique seu vídeo no YouTube como "Não listado" ou "Público".
+             Vídeo oficial do projeto: https://youtu.be/FTvCsljDFso
+
+             autoplay=1 : tenta iniciar automaticamente
+             mute=1     : inicia sem som (exigência comum do navegador)
+             loop=1     : repete o vídeo
+             playlist=  : necessário para repetir um único vídeo
+             Os controles do YouTube permitem ativar/desativar o áudio.
              ================================================= -->
         <section id="video-introducao" class="intro-video-section" aria-labelledby="intro-video-title">
           <div class="intro-video-header">
@@ -170,31 +155,14 @@ O projeto tem como objetivo registrar e descrever as experiências vivenciadas d
           </div>
 
           <div class="intro-video-frame">
-            <video
-              id="video-introd"
-              autoplay
-              muted
-              loop
-              playsinline
-              controls
-              preload="metadata"
-              aria-label="Vídeo introdutório do Diário de Bordo Raízes e Vozes"
-            >
-              <source src="introd.mp4" type="video/mp4">
-              Seu navegador não suporta a reprodução de vídeos MP4.
-            </video>
-
-            <div class="intro-video-toolbar">
-              <span>Raízes &amp; Vozes · Diário de Bordo · EI-31</span>
-              <button
-                type="button"
-                id="intro-video-audio"
-                class="intro-video-audio"
-                aria-pressed="false"
-              >
-                🔇 Ativar áudio
-              </button>
-            </div>
+            <iframe
+              src="https://www.youtube.com/embed/FTvCsljDFso?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=FTvCsljDFso&amp;playsinline=1&amp;controls=1"
+              title="Vídeo introdutório do Diário de Bordo Raízes e Vozes"
+              allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+              allowfullscreen
+              loading="eager"
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
           </div>
         </section>
 
@@ -525,29 +493,5 @@ Talvez a beleza da escrevivência esteja justamente nisso: transformar aquilo qu
     });
   </script>
 
-  <!-- Controle independente do áudio do vídeo introdutório. -->
-  <script>
-    (() => {
-      const video = document.getElementById('video-introd');
-      const audioButton = document.getElementById('intro-video-audio');
-
-      if (!video || !audioButton) return;
-
-      function updateAudioButton() {
-        const soundOn = !video.muted;
-        audioButton.textContent = soundOn ? '🔊 Desativar áudio' : '🔇 Ativar áudio';
-        audioButton.setAttribute('aria-pressed', String(soundOn));
-      }
-
-      audioButton.addEventListener('click', () => {
-        video.muted = !video.muted;
-        updateAudioButton();
-      });
-
-      // Mantém o botão sincronizado com o controle de volume nativo.
-      video.addEventListener('volumechange', updateAudioButton);
-      updateAudioButton();
-    })();
-  </script>
 </body>
 </html>
