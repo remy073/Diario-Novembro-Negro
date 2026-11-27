@@ -1,0 +1,610 @@
+/* ===============================================================
+   RAÍZES & VOZES — STYLE.CSS
+
+   ÍNDICE:
+   01. Cores e fontes (variáveis)
+   02. Estilos gerais
+   03–06. Layout, sidebar e cabeçalho
+   07–09. Textos, botões e capa
+   10–11. Diário e reflexões
+   12. Formulário
+   13–14. Responsividade e acessibilidade
+
+   DICA: Para mudar as cores do site inteiro, edite apenas :root.
+   =============================================================== */
+
+/* 01. PALETA DE CORES E FONTES */
+:root {
+  --background: #F8F3E8;
+  --ink: #231E19;
+  --muted: #6E6557;
+  --sidebar: #191C18;
+  --red: #B74730;
+  --gold: #D1A147;
+  --green: #377049;
+  --line: #DCD0BC;
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-ui: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* 02. RESET E ESTILOS GLOBAIS */
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--ink);
+  font-family: var(--font-ui);
+}
+button, input, textarea, select {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 03. LAYOUT: MENU FIXO + CONTEÚDO */
+.layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 225px minmax(0, 1fr);
+}
+.sidebar {
+  background: var(--sidebar);
+  color: #F8EEDB;
+  padding: 34px 18px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+/* 04. MARCA E FAIXAS COLORIDAS */
+.brand {
+  display: block;
+  font: 36px/1.02 var(--font-display);
+  letter-spacing: -1px;
+  padding: 0 10px;
+}
+.brand em {
+  color: #E0AA44;
+  font-weight: normal;
+}
+.brand-subtitle {
+  color: #BAB39C;
+  padding: 12px 10px 0;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+.color-stripe, .hero-stripe, .reflection-stripe {
+  display: flex;
+}
+.color-stripe {
+  height: 4px;
+  margin: 29px 10px 30px;
+}
+.color-stripe span, .hero-stripe span, .reflection-stripe span {
+  flex: 1;
+}
+.color-stripe span:nth-child(1), .hero-stripe span:nth-child(1), .reflection-stripe span:nth-child(1) {
+  background: var(--red);
+}
+.color-stripe span:nth-child(2), .hero-stripe span:nth-child(2), .reflection-stripe span:nth-child(2) {
+  background: var(--gold);
+}
+.color-stripe span:nth-child(3), .hero-stripe span:nth-child(3), .reflection-stripe span:nth-child(3) {
+  background: var(--green);
+}
+.hero-stripe span:nth-child(4) {
+  background: var(--sidebar);
+}
+
+/* 05. NAVEGAÇÃO LATERAL */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  border-radius: 5px;
+  padding: 14px 12px;
+  color: #C7C5B7;
+  font-size: 13px;
+  transition: background .2s, color .2s;
+}
+.nav-link:hover, .nav-link.active {
+  background: #383B2C;
+  color: #F2D49F;
+}
+.nav-icon {
+  font-size: 20px;
+  width: 20px;
+  text-align: center;
+}
+.sidebar-quote {
+  margin-top: auto;
+  padding: 22px 10px 0;
+  border-top: 1px solid #424234;
+  color: #CEBD9B;
+  font: italic 20px/1.35 var(--font-display);
+}
+
+/* 06. CONTEÚDO PRINCIPAL E BARRA SUPERIOR */
+.main {
+  min-width: 0;
+}
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: #f8f3e8f0;
+  backdrop-filter: blur(12px);
+  padding: 15px 34px;
+  border-bottom: 1px solid #E6DDCB;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  color: #796D5C;
+  font-size: 11px;
+  letter-spacing: .3px;
+}
+.account {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+.avatar {
+  display: grid;
+  place-items: center;
+  background: #C7A054;
+  color: #1A2118;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-weight: 800;
+}
+.content {
+  max-width: 840px;
+  margin: auto;
+  padding: 58px 58px 100px;
+}
+
+/* 07. TIPOGRAFIA: TÍTULOS E TEXTOS */
+.eyebrow {
+  margin: 0;
+  font-size: 11px;
+  color: var(--red);
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: normal;
+}
+h1 {
+  margin: 17px 0 22px;
+  font-size: clamp(44px, 5.3vw, 77px);
+  line-height: 1.06;
+  letter-spacing: -2.3px;
+}
+h1 em {
+  color: var(--red);
+}
+.lead {
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 14px;
+  max-width: 520px;
+  margin: 0 0 24px;
+}
+
+/* 08. BOTÕES */
+.button {
+  padding: 13px 20px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  transition: transform .15s, background .15s;
+}
+.button:hover {
+  transform: translateY(-1px);
+}
+.button-primary {
+  border: 1px solid var(--red);
+  background: var(--red);
+  color: white;
+}
+.button-primary:hover {
+  background: #943b29;
+}
+.button-outline {
+  border: 1px solid #CBBB9F;
+  background: transparent;
+  color: #6B5E47;
+}
+.button-outline:hover {
+  background: #EFE5D1;
+}
+
+.hero-art {
+    margin-top: 35px;
+    height: 245px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    position: relative;
+
+    /* NOVA IMAGEM DO BANNER */
+    background-image: url("image/BannerPTG.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-art > svg {
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    inset: 0;
+}
+
+/* Ocultar a ilustração antiga */
+.hero-art > svg {
+    display: none;
+}
+
+/* TEXTO DO BANNER - OCULTO */
+.hero-copy {
+    display: none;
+}
+
+/* 10. LINHA DO TEMPO E REGISTROS */
+.section-heading {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.section-heading h2 {
+  font-size: 29px;
+  margin: 0;
+}
+.section-heading small {
+  font-size: 11px;
+  color: #8F7F6D;
+}
+.timeline {
+  margin: 33px 0 0 10px;
+  padding-left: 30px;
+  border-left: 1px solid #C7AE89;
+}
+.entry {
+  position: relative;
+  margin-bottom: 51px;
+}
+.entry::before {
+  content: '';
+  position: absolute;
+  left: -36px;
+  top: 3px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--red);
+  background: var(--background);
+  border-radius: 50%;
+}
+.entry-date {
+  margin: 0;
+  color: #A34834;
+  font-size: 11px;
+  letter-spacing: 1.1px;
+  font-weight: 800;
+}
+.entry h3 {
+  font-size: 31px;
+  letter-spacing: -.6px;
+  margin: 12px 0;
+}
+.tag {
+  display: inline-block;
+  background: #E8DBBC;
+  color: #5B5A33;
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 3px;
+  margin-bottom: 12px;
+}
+.entry-description {
+  margin: 0 0 17px;
+  color: #6C6255;
+  font-size: 13px;
+  line-height: 1.95;
+  white-space: pre-wrap;
+}
+.entry blockquote {
+  border-left: 3px solid #C39A47;
+  background: #EFE5D1;
+  padding: 20px 23px;
+  margin: 20px 0;
+  font: italic 21px/1.4 var(--font-display);
+  color: #4E4739;
+}
+.entry-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 1px solid #E5D9C7;
+  padding-top: 12px;
+  font-size: 11px;
+  color: #91836F;
+}
+.entries-actions {
+  text-align: center;
+  padding-bottom: 55px;
+}
+
+/* 11. SEÇÃO FINAL DE REFLEXÕES */
+.reflection-section {
+  border-top: 1px solid var(--line);
+  padding-top: 32px;
+}
+.reflection-section h2 {
+  font-size: 36px;
+  margin: 14px 0;
+}
+.reflection-stripe {
+  height: 6px;
+  margin-top: 28px;
+}
+
+/* 12. MODAL E FORMULÁRIO DE NOVO REGISTRO */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: #131c16b5;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-backdrop[hidden] {
+  display: none;
+}
+.modal {
+  background: var(--background);
+  border-radius: 9px;
+  padding: 30px;
+  width: min(450px, 100%);
+  max-height: 94vh;
+  overflow: auto;
+  box-shadow: 0 15px 70px #0004;
+}
+.modal h2 {
+  font-size: 32px;
+  margin: 8px 0 17px;
+}
+.modal label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 14px 0 6px;
+}
+.modal input, .modal textarea, .modal select {
+  background: #fffdfa;
+  color: #28231F;
+  border: 1px solid #D5C6AF;
+  border-radius: 4px;
+  padding: 12px;
+  width: 100%;
+  font-size: 13px;
+}
+.modal input:focus, .modal textarea:focus, .modal select:focus {
+  outline: 2px solid #C39A47;
+  outline-offset: 1px;
+}
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 21px;
+}
+
+/* 13. RESPONSIVIDADE: CELULARES E TABLETS */
+@media (max-width: 700px) {
+  .layout {
+    grid-template-columns: 61px minmax(0,1fr);
+  }
+  .sidebar {
+    padding: 18px 6px;
+    align-items: center;
+  }
+  .brand {
+    text-align: center;
+    font-size: 12px;
+    padding: 0;
+    letter-spacing: -.3px;
+  }
+  .brand-subtitle, .nav-label, .sidebar-quote {
+    display: none;
+  }
+  .color-stripe {
+    width: 34px;
+    margin: 26px 0;
+  }
+  .nav {
+    width: 100%;
+  }
+  .nav-link {
+    justify-content: center;
+    padding: 13px 0;
+  }
+  .topbar {
+    padding: 12px 15px;
+    font-size: 9px;
+  }
+  .account > span:first-child {
+    display: none;
+  }
+  .content {
+    padding: 35px 23px 65px;
+  }
+  h1 {
+    font-size: clamp(35px, 8vw, 58px);
+    letter-spacing: -1.5px;
+  }
+  .hero-art {
+    height: 185px;
+  }
+  .hero-copy {
+    padding: 20px;
+  }
+  .hero-copy small {
+    font-size: 8px;
+  }
+  .hero-copy strong {
+    font-size: 25px;
+  }
+  .entry h3 {
+    font-size: 25px;
+  }
+  .section-heading h2 {
+    font-size: 23px;
+  }
+  .section-heading small {
+    white-space: nowrap;
+  }
+}
+
+/* 14. ACESSIBILIDADE: REDUZ ANIMAÇÕES QUANDO SOLICITADO */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
+
+/* ===============================================================
+   15. REFINAMENTO VISUAL — NAVEGAÇÃO, BANNER E LEITURA
+   Edite esta seção para personalizar o visual refinado.
+   As cores originais do projeto são mantidas em :root.
+   =============================================================== */
+
+/* Menu lateral: mais espaço, logo proporcional e navegação elegante */
+.layout { grid-template-columns: 245px minmax(0, 1fr); }
+.sidebar { padding: 30px 19px 24px; border-right: 1px solid #ffffff12; }
+.brand { display: flex; justify-content: center; align-items: center; padding: 5px 8px 0; }
+.brand-logo { display: block; width: min(100%, 156px); height: auto; max-height: 146px; object-fit: contain; }
+.brand-subtitle { text-align: center; font-size: 10px; font-weight: 700; letter-spacing: 2.4px; padding: 16px 0 0; }
+.color-stripe { margin: 23px 15px 31px; border-radius: 20px; overflow: hidden; height: 5px; }
+.nav { gap: 9px; }
+.nav-link { position: relative; border: 1px solid transparent; border-radius: 11px; padding: 15px 14px; font-size: 14px; font-weight: 550; transition: background .2s, color .2s, border-color .2s, transform .2s; }
+.nav-link:hover { transform: translateX(3px); background: #323A2D; color: #F9E5B9; }
+.nav-link.active { background: #3C4938; color: #FFE7AF; border-color: #E0AA442b; box-shadow: inset 3px 0 0 var(--gold); }
+.nav-icon { font-size: 23px; width: 23px; line-height: 1; }
+.nav-link:focus-visible, .button:focus-visible, .intro-anchor:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.sidebar-quote { color: #D7C2A0; font-size: 21px; }
+
+/* Cabeçalho fixo mais limpo */
+.topbar { padding: 18px clamp(24px, 4vw, 68px); font-size: 11px; font-weight: 700; letter-spacing: 1px; }
+.avatar { overflow: hidden; width: 37px; height: 37px; border: 2px solid #D6BB80; }
+.avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.content { max-width: 1180px; padding: 36px clamp(24px, 4vw, 64px) 100px; }
+
+/* 09. Banner maior: mantém sua imagem image/BannerPTG.png */
+.hero-art {
+  margin-top: 5px;
+  width: 100%;
+  height: clamp(330px, 36vw, 510px);
+  border-radius: 16px 16px 0 0;
+  background-image: url("image/BannerPTG.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #31513B;
+  box-shadow: 0 14px 32px #3a33281c;
+}
+.hero-stripe { height: 7px; margin-bottom: 0; border-radius: 0 0 10px 10px; overflow: hidden; }
+
+/* Apresentação do projeto: tipografia maior e parágrafos legíveis */
+.intro-card { padding: 36px clamp(20px, 4vw, 48px) 38px; margin-top: 24px; border: 1px solid #E5DACC; border-radius: 14px; background: #FFFCF6; }
+.intro-title { font-size: clamp(30px, 3.6vw, 47px); line-height: 1.18; letter-spacing: -1.3px; margin: 12px 0 15px; }
+.intro-description { max-width: 80ch; font-size: 16px; line-height: 1.9; color: #4C453B; margin: 0; }
+.intro-anchor { display: inline-flex; gap: 10px; align-items: center; margin-top: 22px; color: #9E3F2D; font-size: 13px; font-weight: 750; }
+.intro-anchor:hover { text-decoration: underline; }
+
+/* Registros: cartões com maior contraste, espaçamento e hierarquia */
+.entries-section { margin-top: 75px; }
+.section-heading { align-items: end; gap: 20px; padding-bottom: 22px; }
+.section-heading h2 { margin: 9px 0 7px; font-size: clamp(28px, 3.4vw, 43px); line-height: 1.16; letter-spacing: -.8px; }
+.section-subtitle { color: #6F6458; font-size: 14px; margin: 0; }
+.timeline { margin: 31px 0 0 12px; padding-left: 28px; border-color: #D0B995; }
+.entry { padding: clamp(22px, 3vw, 38px); margin: 0 0 28px 0; background: #FFFCF7; border: 1px solid #E5D8C5; border-radius: 14px; box-shadow: 0 5px 20px #43351d0a; }
+.entry::before { top: 32px; left: -35px; width: 12px; height: 12px; background: var(--gold); border: 3px solid var(--red); }
+.entry-date { font-size: 12px; line-height: 1.5; }
+.entry h3 { font-size: clamp(26px, 3.4vw, 36px); line-height: 1.2; margin: 12px 0 14px; }
+.entry .tag { margin: 0 0 20px; border-radius: 100px; padding: 7px 13px; font-size: 11px; font-weight: 700; }
+.entry-description { color: #413B33; font-size: 16px; line-height: 1.85; margin: 0 0 24px; max-width: 80ch; }
+.entry-image { display: block; width: 100%; max-height: 510px; height: auto; object-fit: contain; background: #F1EBE1; border-radius: 9px; margin: 14px 0 25px; }
+.entry-footer { font-size: 12px; padding-top: 17px; color: #756B5C; }
+.entries-actions { padding: 10px 0 55px 40px; }
+.reflection-section { padding-top: 45px; }
+.reflection-section .lead { font-size: 16px; max-width: 75ch; }
+
+/* 16. CELULARES E TABLETS */
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 195px minmax(0, 1fr); }
+  .sidebar { padding: 24px 12px; }
+  .brand-logo { max-width: 120px; }
+  .content { padding: 25px 26px 70px; }
+  .hero-art { height: clamp(260px, 41vw, 390px); }
+  .intro-description, .entry-description { font-size: 15px; }
+}
+@media (max-width: 700px) {
+  .layout { grid-template-columns: 64px minmax(0, 1fr); }
+  .sidebar { align-items: center; padding: 16px 5px; }
+  .brand { padding: 0; }
+  .brand-logo { width: 45px; max-height: 75px; }
+  .brand-subtitle, .nav-label, .sidebar-quote { display: none; }
+  .nav { width: 100%; }
+  .nav-link { justify-content: center; padding: 13px 0; }
+  .nav-link:hover { transform: none; }
+  .nav-icon { width: auto; }
+  .color-stripe { width: 36px; margin: 19px 0 26px; }
+  .topbar { padding: 13px 13px; font-size: 9px; }
+  .content { padding: 20px 15px 50px; }
+  .hero-art { height: clamp(200px, 54vw, 310px); border-radius: 10px 10px 0 0; }
+  .intro-card { margin-top: 18px; padding: 23px 18px; }
+  .intro-title { font-size: 30px; }
+  .intro-description { font-size: 14px; line-height: 1.8; }
+  .entries-section { margin-top: 48px; }
+  .section-heading { align-items: stretch; flex-direction: column; }
+  .section-heading .button { align-self: flex-start; }
+  .timeline { margin-left: 6px; padding-left: 17px; }
+  .entry { padding: 19px 16px; }
+  .entry::before { left: -24px; }
+  .entry h3 { font-size: 26px; }
+  .entry-description { font-size: 14px; line-height: 1.85; }
+  .entry-footer { flex-wrap: wrap; }
+  .entries-actions { padding-left: 20px; }
+}

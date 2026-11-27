@@ -1,0 +1,90 @@
+/* RAÍZES & VOZES — GALERIA
+   01. Cabeçalho e álbuns | 02. Mosaico | 03. Responsividade
+   As cores, fontes, menu e layout vêm do style.css original. */
+.gallery-content { --gallery-gap: 8px; }
+.gallery-intro { margin-top: 0; margin-bottom: 56px; }
+.gallery-intro h1 { font-size: clamp(36px, 5vw, 70px); }
+.gallery-intro .reflection-stripe { border-radius: 4px; overflow: hidden; }
+.album { margin: 0 0 36px; padding: clamp(16px, 3vw, 36px); background: #FFFCF7; border: 1px solid #E5D8C5; border-radius: 14px; box-shadow: 0 5px 20px #43351d0a; }
+.album-topo { display: flex; gap: 15px; align-items: baseline; border-bottom: 1px solid var(--line); padding-bottom: 18px; margin-bottom: 26px; }
+.album-topo h2 { margin: 0; font-size: clamp(24px, 3vw, 36px); }
+.album-topo p { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+.numero { color: var(--red); font-size: 12px; font-weight: 800; }
+.gallery-footer { border-top: 1px solid var(--line); padding-top: 22px; color: var(--muted); font-size: 12px; }
+/* 04. MOSAICO — grade de 12 colunas e 8 linhas.
+   A propriedade grid-area segue: linha inicial / coluna inicial / linha final / coluna final.
+   Os espaços vazios nas bordas são intencionais, como na imagem de referência. */
+.mosaico { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: repeat(8, minmax(0, 1fr)); gap: var(--gallery-gap); width: min(100%, 780px); aspect-ratio: 12 / 8; margin: auto; }
+.mosaico-a .p1 { grid-area: 1 / 4 / 3 / 8; }
+.mosaico-a .p2 { grid-area: 2 / 8 / 4 / 11; }
+.mosaico-a .p3 { grid-area: 3 / 4 / 7 / 9; }
+.mosaico-a .p4 { grid-area: 3 / 1 / 7 / 4; }
+.mosaico-a .p5 { grid-area: 4 / 9 / 7 / 13; }
+.mosaico-a .p6 { grid-area: 7 / 5 / 9 / 10; }
+.mosaico-b .p1 { grid-area: 1 / 5 / 3 / 11; }
+.mosaico-b .p2 { grid-area: 3 / 2 / 5 / 5; }
+.mosaico-b .p3 { grid-area: 3 / 5 / 7 / 9; }
+.mosaico-b .p4 { grid-area: 5 / 1 / 7 / 5; }
+.mosaico-b .p5 { grid-area: 3 / 9 / 7 / 13; }
+.mosaico-b .p6 { grid-area: 7 / 3 / 9 / 10; }
+.mosaico-c .p1 { grid-area: 1 / 4 / 3 / 11; }
+.mosaico-c .p2 { grid-area: 2 / 1 / 6 / 4; }
+.mosaico-c .p3 { grid-area: 3 / 4 / 6 / 9; }
+.mosaico-c .p4 { grid-area: 3 / 9 / 8 / 13; }
+.mosaico-c .p5 { grid-area: 6 / 2 / 8 / 9; }
+.mosaico-c .p6 { grid-area: 8 / 5 / 9 / 11; }
+/* 05. FOTOS — object-fit: cover preenche sem distorcer.
+   Para ajustar o enquadramento de uma foto: style="object-position: 50% 20%" no img. */
+.foto { position: relative; margin: 0; overflow: hidden; min-width: 0; min-height: 0; background: #3C4938; }
+.foto:nth-child(3n+2) { background: #8B6347; }
+.foto:nth-child(3n) { background: #6E6557; }
+.foto img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s ease; }
+.foto img[hidden] { display: none; }
+.foto:hover img { transform: scale(1.035); }
+.placeholder { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; opacity: .7; font-size: .68rem; letter-spacing: .12em; }
+.foto figcaption { position: absolute; bottom: 0; left: 0; right: 0; padding: 22px 10px 8px; background: linear-gradient(transparent, rgba(0,0,0,.75)); color: white; font-size: clamp(.65rem, 1.4vw, .85rem); line-height: 1.2; }
+
+/* Acabamento das fotografias */
+.foto { border-radius: 5px; }
+/* 03. Celulares: mantém o menu original e adapta a grade. */
+@media (max-width: 700px) {
+ .gallery-intro { margin-bottom: 30px; }
+ .album { padding: 12px; margin-bottom: 24px; }
+ .album-topo { gap: 8px; }
+ .album-topo p { font-size: 12px; }
+ .mosaico { grid-template-columns: repeat(2,minmax(0,1fr)); grid-template-rows: none; grid-auto-rows: 110px; aspect-ratio: auto; gap: 5px; }
+ .mosaico .foto { grid-area: auto; }
+ .mosaico .p3 { grid-row: span 2; }
+ .mosaico .p6 { grid-column: span 2; }
+ .foto figcaption { font-size: 11px; padding: 18px 5px 5px; }
+}
+@media (max-width: 380px) { .mosaico { grid-template-columns: 1fr; } .mosaico .p6 { grid-column: auto; } .mosaico .p3 { grid-row: auto; } }
+
+/* 06. ÁLBUM EXPANDIDO — rolagem horizontal nativa, sem biblioteca. */
+.mosaico .foto { cursor: zoom-in; }
+.mosaico .foto:focus-visible, .trilho button:focus-visible { outline: 3px solid var(--gold); outline-offset: -3px; }
+.abrir-album { display: block; margin: 24px auto 0; }
+.visualizador, .foto-ampliada { border: 1px solid var(--line); border-radius: 15px; padding: clamp(16px,3vw,34px); color: var(--ink); background: var(--background); width: min(1200px, 95vw); max-width: 95vw; max-height: 94dvh; overflow: auto; }
+.visualizador::backdrop, .foto-ampliada::backdrop { background: #191c18df; backdrop-filter: blur(5px); }
+.visor-topo { display:flex; justify-content:space-between; align-items:center; gap: 16px; border-bottom:1px solid var(--line); padding-bottom: 14px; }
+.visor-topo h2 { margin: 8px 0 0; font-size: clamp(24px,4vw,40px); }
+.fechar, .seta { border:1px solid var(--line); background:#FFFCF7; color:var(--ink); border-radius:50%; width:42px; height:42px; flex:none; font-size:28px; line-height:1; }
+.visor-dica { color:var(--muted); font-size:13px; margin:18px 0; }
+.trilho-wrap { position:relative; }
+.trilho { display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; padding: 0 0 16px; scrollbar-color:var(--gold) #e8dfcf; }
+.trilho button { flex:0 0 clamp(200px,45vw,520px); scroll-snap-align:start; border:0; padding:0; background:transparent; text-align:left; color:var(--ink); min-width:0; }
+.trilho .foto { height:clamp(180px,35vw,350px); border-radius:9px; cursor:zoom-in; }
+/* Imagens completas, sem recorte, no álbum horizontal. */
+.trilho .foto img { object-fit:contain; }
+.trilho .foto:hover img { transform:none; }
+.trilho .foto figcaption { display:none; }
+.trilho .legenda { display:block; padding:10px 2px; font-size:13px; color:var(--muted); }
+.seta { position:absolute; top:40%; z-index:1; box-shadow:0 3px 12px #0003; }
+.anterior { left:6px; } .seguinte { right:6px; }
+.foto-ampliada { width: min(1200px,95vw); background:var(--sidebar); color:#F8F3E8; text-align:center; border:0; }
+.foto-ampliada img { display:block; width:100%; height: min(72dvh,850px); object-fit:contain; margin:12px auto 0; }
+.foto-ampliada .fechar { display:block; margin-left:auto; }
+.foto-ampliada p { margin:12px 0 0; }
+body:has(dialog[open]) { overflow:hidden; }
+@media(max-width:700px) { .trilho button { flex-basis:85%; } .seta { width:34px; height:34px; } }
+@media(prefers-reduced-motion:reduce) { .trilho { scroll-behavior:auto; } }

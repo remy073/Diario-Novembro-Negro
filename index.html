@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#191c18">
+  <title>Raízes & Vozes | Diário de Bordo</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+
+  <!-- Estilos exclusivos dos controles de leitura de cada reflexão. -->
+  <style>
+    .entry-more[hidden], .entry-toggle[hidden] { display: none !important; }
+    .entry-toggle { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; }
+    .entry-toggle:focus-visible { outline: 2px solid var(--gold, #D1A147); outline-offset: 3px; }
+    .entry { scroll-margin-top: 100px; }
+  </style>
+</head>
+<body>
+  <!-- =====================================================
+       1. ESTRUTURA GERAL DO SITE
+       Menu lateral + conteúdo com rolagem.
+       ===================================================== -->
+  <div class="layout">
+    <!-- 1.1 MENU LATERAL: altere marca e itens de navegação aqui. -->
+    <aside class="sidebar" aria-label="Menu lateral">
+      <a class="brand" href="#inicio" aria-label="Ir para o início">
+        <img src="image/ifbalogo.png" alt="Logo do IFBA" class="brand-logo">
+      </a>
+      <div class="brand-subtitle">DIÁRIO DE BORDO</div>
+      <div class="color-stripe" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <!-- Links para as seções com IDs: inicio, registros e reflexoes. -->
+      <nav class="nav" aria-label="Navegação">
+        <a href="#inicio" class="nav-link active" data-nav="inicio">
+          <span class="nav-icon" aria-hidden="true">⌂</span>
+          <span class="nav-label">Início</span>
+        </a>
+        <a href="registros.html" class="nav-link" data-nav="registros">
+          <span class="nav-icon" aria-hidden="true">▤</span>
+          <span class="nav-label">Registros</span>
+        </a>
+        <a href="#reflexoes" class="nav-link" data-nav="reflexoes">
+          <span class="nav-icon" aria-hidden="true">◈</span>
+          <span class="nav-label">Reflexões</span>
+        </a>
+      </nav>
+      <p class="sidebar-quote">Nossa história.<br>Nossa identidade.</p>
+    </aside>
+
+    <!-- 1.2 ÁREA PRINCIPAL: conteúdo do diário. -->
+    <main class="main" id="main-scroller">
+      <!-- Barra superior fixa durante o scroll -->
+      <header class="topbar">
+        <span>MEMÓRIAS / CONSCIÊNCIA NEGRA / ALUNOS: REILLY, EVERTON E LUIS FELIPE </span>
+        <div class="account">
+          <span>Nosso diário</span>
+          <a class="avatar" href="sobre.html" aria-label="Conhecer o grupo">
+            <img src="image/grupo.png" alt="Grupo do projeto">
+          </a>
+        </div>
+      </header>
+
+      <div class="content">
+        <!-- =================================================
+             2. CAPA / INÍCIO: título, descrição, botão e arte.
+             ================================================= -->
+        <section id="inicio" class="intro-section">
+          <!-- BANNER: troque a imagem em style.css, seção 09 (.hero-art). -->
+          <div class="hero-art" role="img" aria-label="Banner do projeto Consciência Negra"></div>
+          <div class="hero-stripe" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <!-- INTRODUÇÃO: texto original preservado em uma área de leitura confortável. -->
+          <div class="intro-card">
+            <p class="eyebrow">SOBRE ESTE DIÁRIO</p>
+            <h1 class="intro-title">Memórias que constroem histórias.</h1>
+            <p class="intro-description">Este diário de bordo integra um projeto pedagógico de caráter avaliativo, desenvolvido durante a unidade letiva. Sua finalidade é registrar e descrever detalhadamente as experiências vivenciadas ao longo do evento, destacando os aprendizados, as reflexões e a valorização da história, da cultura e do protagonismo da população negra.</p>
+            <a class="intro-anchor" href="#registros">Explorar os registros <span aria-hidden="true">↓</span></a>
+          </div>
+        </section>
+
+        <!-- =================================================
+             3. REGISTROS: cada <article> corresponde a uma anotação.
+             Registros criados pelo formulário vêm do script.js.
+             ================================================= -->
+
+        <section id="registros" class="entries-section">
+          <div class="section-heading">
+
+            <div>
+              <p class="eyebrow">ACOMPANHE A EXPERIÊNCIA</p>
+              <h2>Memórias registradas</h2>
+              <p class="section-subtitle">Registros de 17 de novembro de 2026</p>
+            </div>
+           
+          </div>
+
+          <div class="timeline" id="entry-list">
+
+ <!-- ================================================= -->
+            <article class="entry">
+              <p class="entry-date">17 NOVEMBRO 2026 · TERÇA-FEIRA</p>
+              <h3>Mesa de Abertura Institucional</h3>
+              <span class="tag">Reflexão</span>
+  <img class="entry-image" src="image/mesaaberta.jpeg" alt="Mesa de abertura institucional do evento" loading="lazy">
+
+              <p class="entry-description">O momento de acolhimento e abertura oficial da programação despertou em nós uma reflexão sobre o verdadeiro papel da educação diante das desigualdades sociais. A presença dos representantes da gestão institucional, do NEABI, da comissão organizadora e do Grêmio Estudantil simbolizou a construção de um compromisso que não pertence exclusivamente à instituição, mas a todos que a constituem.</p>
+
+              <!-- Conteúdo completo da reflexão: exibido pelo botão abaixo. -->
+              <div class="entry-more" id="reflexao-1">
+                <p class="entry-description">Em Pedagogia do Oprimido, Paulo Freire defende a dimensão coletiva da libertação ao afirmar que “os homens se libertam em comunhão”. 
+<img class="entry-image" src="image/paulo.jfif" alt="Mesa de abertura institucional do evento" loading="lazy">
+
+Essa afirmação permite compreender que a superação das desigualdades raciais não pode ser resultado de esforços isolados, tampouco de decisões tomadas exclusivamente pelas autoridades institucionais. Ela exige diálogo, participação e, sobretudo, o reconhecimento daqueles que historicamente tiveram suas vozes e experiências marginalizadas.
+
+Sob a perspectiva freiriana, uma educação verdadeiramente libertadora não se limita a ensinar sobre as injustiças, mas permite que os indivíduos desenvolvam uma consciência crítica e se reconheçam como sujeitos capazes de transformar a realidade. Nesse sentido, a presença da representação estudantil na abertura assumiu um significado especial: os estudantes não devem ser apenas destinatários de uma proposta educacional, mas participantes ativos de sua construção.
+
+Entretanto, esse momento também me despertou uma inquietação: de que maneira os compromissos anunciados naquela abertura ultrapassarão os limites do evento? Essa questão dialoga diretamente com o conceito freiriano de práxis, que une a reflexão à ação transformadora.
+
+Saimos dessa abertura com a percepção de que o maior desafio da programação não está simplesmente em conscientizar, mas em fazer com que essa consciência encontre expressão nas pequenas atitudes do cotidiano. Uma instituição antirracista não se constrói apenas nos momentos em que se discute o racismo, mas, principalmente, naqueles em que se escolhe não reproduzi-lo.</p>
+              <!-- FOTO DO REGISTRO: substitua o caminho abaixo pela imagem desejada. -->
+            
+              <div class="entry-footer">
+
+              </div>
+              </div>
+
+              <!-- Controle individual de leitura. -->
+              <button type="button" class="button button-outline entry-toggle"
+                      aria-controls="reflexao-1" aria-expanded="true" hidden>
+                Exibir menos ↑
+              </button>
+            </article>
+ <!-- ================================================= -->
+
+ <!-- ================================================= -->
+            <article class="entry">
+              <p class="entry-date">17 NOVEMBRO 2026 · TERÇA-FEIRA</p>
+              <h3>Arquitetura decolonial: arquitetura como representação da luta pela terra na obra torto arado</h3>
+              <span class="tag">Reflexão</span>
+               <img class="entry-image" src="image/tortoarado.jfif" alt="Mesa de abertura institucional do evento" loading="lazy">
+              <p class="entry-description">A exposição de maquetes inspiradas na obra Torto Arado, de Itamar Vieira Junior, nos fez enxergar a arquitetura de uma maneira diferente. Aquilo que normalmente associamos à construção de casas, às técnicas e aos materiais ganhou um significado muito mais profundo, envolvendo questões de identidade, pertencimento, liberdade e resistência.</p>
+
+              <!-- Conteúdo completo da reflexão: exibido pelo botão abaixo. -->
+              <div class="entry-more" id="reflexao-2">
+                <p class="entry-description">Na obra, a proibição da construção de casas de alvenaria nos revela uma realidade contraditória: aquelas pessoas podiam trabalhar na terra, constituir suas famílias e construir suas histórias, mas não tinham a garantia de permanecer no lugar onde nasceram e cresceram. A fragilidade das casas de barro, naquele contexto, refletia também a fragilidade de seus direitos.
+
+Um dos aspectos que mais nos chamou a atenção foi perceber como algo aparentemente simples, como construir uma casa de alvenaria, poderia representar uma importante conquista social. Cada tijolo simbolizava não apenas a construção de uma moradia, mas também a esperança de um futuro marcado pela liberdade e pelo pertencimento.
+
+Um detalhe de Torto Arado que torna essa discussão ainda mais significativa é o costume dos moradores de Água Negra de enterrar os umbigos dos recém-nascidos na terra onde viviam, assim como nela sepultavam seus antepassados. Essa tradição nos fez perceber que a relação daquele povo com o território ultrapassava qualquer sentido econômico ou material. Era ali que suas histórias começavam, suas memórias eram construídas e suas raízes permaneciam.
+
+Diante disso, a proibição da construção de casas permanentes se torna ainda mais contraditória. Como poderiam ser considerados estranhos a uma terra que guardava tantas gerações de suas próprias famílias? Ao observarmos as maquetes, conseguimos compreender que a luta pela construção de uma casa de alvenaria representava também a luta pelo reconhecimento de uma história que já existia muito antes de qualquer reivindicação de propriedade.
+
+Outro ponto que nos levou à reflexão foi o protagonismo feminino das personagens Bibiana e Belonísia. Suas trajetórias evidenciam a importância das mulheres na resistência às injustiças, na preservação da memória e na conquista de direitos, fazendo-nos pensar sobre quantas lutas femininas foram fundamentais para a transformação da sociedade, mesmo sem receberem o devido reconhecimento histórico.
+
+Ao observarmos as maquetes, percebemos que não estávamos simplesmente diante de pequenas representações de casas, mas de uma representação material de histórias, conflitos e conquistas que atravessam gerações.
+
+Por fim, esse momento nos deixou uma reflexão: para quem nunca precisou lutar pelo direito de permanecer em sua própria terra, uma casa pode parecer apenas uma construção. Para quem teve esse direito negado, ela representa liberdade, dignidade e a possibilidade de construir o próprio futuro.</p>
+              <!-- FOTO DO REGISTRO: substitua o caminho abaixo pela imagem desejada. -->
+
+              <img class="entry-image" src="image/torto.jfif" alt="Mesa de abertura institucional do evento" loading="lazy">
+              <div class="entry-footer">
+
+              </div>
+              </div>
+
+              <!-- Controle individual de leitura. -->
+              <button type="button" class="button button-outline entry-toggle"
+                      aria-controls="reflexao-2" aria-expanded="true" hidden>
+                Exibir menos ↑
+              </button>
+            </article>
+ <!-- ================================================= -->      
+  
+  <!-- ================================================= -->
+            <article class="entry">
+              <p class="entry-date">17 NOVEMBRO 2026 · TERÇA-FEIRA</p>
+              <h3>Entre saberes e sabores: viveres, corpos e existências</h3>
+              <span class="tag">Reflexão</span>
+              <img class="entry-image" src="image/sabor.jfif" alt="Mesa de abertura institucional do evento" loading="lazy">
+              <p class="entry-description">A apresentação do livro digital de receitas, desenvolvido a partir das experiências dos estudantes com as merendeiras do IFBA, nos fez repensar a maneira como enxergamos o conhecimento e os espaços em que ele é construído.</p>
+
+              <!-- Conteúdo completo da reflexão: exibido pelo botão abaixo. -->
+              <div class="entry-more" id="reflexao-3">
+                <p class="entry-description">O projeto, idealizado pela nutricionista Venuska Leite, mostrou que a aprendizagem pode acontecer de maneira espontânea, por meio da convivência e da troca de experiências. O simples ato de preparar uma receita possibilitou a integração de conhecimentos matemáticos, linguísticos e alimentares, aproximando a teoria da realidade cotidiana.
+
+O que mais nos chamou a atenção, entretanto, foi a valorização das merendeiras como protagonistas desse processo. São profissionais com quem convivemos diariamente, mas cujas histórias, experiências e conhecimentos raramente temos a oportunidade de conhecer. Nesse sentido, o projeto também nos fez refletir sobre a invisibilidade de determinados trabalhadores dentro dos espaços que frequentamos.
+
+É interessante pensar em como, muitas vezes, atribuímos maior importância ao conhecimento adquirido por meio de livros e formações acadêmicas, enquanto deixamos de reconhecer aquele construído ao longo de anos de experiência. Essa atividade nos mostrou que essas diferentes formas de conhecimento não precisam competir entre si, mas podem se complementar.
+
+A produção do e-book também representa uma maneira de preservar memórias e reconhecer a importância da culinária na transmissão de tradições culturais. Afinal, por trás de uma receita, podem existir histórias familiares, lembranças da infância e conhecimentos compartilhados entre gerações.
+
+Mais do que apresentar um livro de receitas, esse momento nos convidou a olhar com maior atenção para as pessoas que fazem parte da nossa rotina. Quantas vezes estivemos diante de alguém que tinha muito a nos ensinar, mas não nos permitimos aprender simplesmente por não reconhecermos naquela pessoa a figura de um educador?
+
+</p>
+              <!-- FOTO DO REGISTRO: substitua o caminho abaixo pela imagem desejada. -->
+              <div class="entry-footer">
+                <span>✎ Reflexão do dia: 
+                  Talvez aprender também seja abandonar a ideia de que o conhecimento possui um lugar específico ou pertence exclusivamente a determinadas pessoas.
+                </span>
+                <span>17/11/2026</span>
+              </div>
+              </div>
+
+              <!-- Controle individual de leitura. -->
+              <button type="button" class="button button-outline entry-toggle"
+                      aria-controls="reflexao-3" aria-expanded="true" hidden>
+                Exibir menos ↑
+              </button>
+            </article>
+ <!-- ================================================= -->
+
+ <!-- ================================================= -->
+            <article class="entry">
+              <p class="entry-date">17 NOVEMBRO 2026 · TERÇA-FEIRA</p>
+              <h3>Capoeira Experimental</h3>
+              <span class="tag">Reflexão</span>
+              <img class="entry-image" src="image/capoeira.jfif" alt="Mesa de abertura institucional do evento" loading="lazy">
+              <p class="entry-description">A atividade de capoeira experimental nos proporcionou uma experiência que foi além da prática esportiva. Ao conhecermos suas origens e seu contexto histórico, conseguimos compreender como os movimentos, a musicalidade e as tradições da capoeira carregam marcas da resistência e da identidade cultural afro-brasileira.</p>
+
+              <!-- Conteúdo completo da reflexão: exibido pelo botão abaixo. -->
+              <div class="entry-more" id="reflexao-4">
+                <p class="entry-description">O que nos chamou a atenção foi perceber como uma manifestação cultural que já foi perseguida e criminalizada passou a ser reconhecida como parte importante da identidade brasileira. Essa transformação nos fez refletir sobre uma contradição presente em nossa sociedade: muitas expressões da cultura negra, hoje admiradas, foram historicamente reprimidas e desvalorizadas.
+
+A parte prática, composta por alongamentos e movimentos básicos, nos permitiu experimentar aquilo que até então conhecíamos principalmente pela teoria. Percebemos que a capoeira exige não apenas habilidade física, mas também atenção, equilíbrio, ritmo, respeito e compreensão do outro. Existe uma espécie de diálogo entre os participantes, no qual o corpo se torna uma forma de comunicação.
+
+Outro aspecto interessante foi compreender como o próprio corpo pode ser um instrumento de preservação da memória. Nem toda história precisa estar registrada em livros para atravessar gerações. Ela também pode ser transmitida por gestos, movimentos, músicas e experiências compartilhadas.
+
+Esse momento nos fez pensar sobre a importância de vivenciar as manifestações culturais, em vez de apenas estudá-las de maneira distante. Ao praticarmos a capoeira, nos aproximamos de uma tradição que carrega histórias de resistência, criatividade e afirmação de identidade.
+
+Mais do que aprender alguns movimentos, tivemos a oportunidade de compreender que a cultura também se manifesta pelo corpo e que, por meio dele, um povo pode preservar e reafirmar sua história.</p>
+              <!-- FOTO DO REGISTRO: substitua o caminho abaixo pela imagem desejada. -->
+             <img class="entry-image" src="image/capo.jfif" alt="Mesa de abertura institucional do evento" loading="lazy">
+
+              <div class="entry-footer">
+              </div>
+              </div>
+
+              <!-- Controle individual de leitura. -->
+              <button type="button" class="button button-outline entry-toggle"
+                      aria-controls="reflexao-4" aria-expanded="true" hidden>
+                Exibir menos ↑
+              </button>
+            </article>
+ <!-- ================================================= -->
+
+          <div class="section-heading">
+
+            <div>
+              <p class="eyebrow">ACOMPANHE A EXPERIÊNCIA</p>
+              <h2>Memórias registradas</h2>
+              <p class="section-subtitle">Registros de 18 de novembro de 2026</p>
+            </div>
+           
+          </div>
+
+  <!-- ================================================= -->
+            <article class="entry">
+              <p class="entry-date">18 NOVEMBRO 2026 · QUARTA-FEIRA</p>
+              <h3>Mesa-Redonda – Ancestralidade e Resistência: O Protagonismo das Mulheres Negras e Indígenas e seu Papel Político nas Artes, na Ciência e na Vida em Comunidade</h3>
+              <span class="tag">Reflexão</span>
+              <img class="entry-image" src="image/indigena.jfif" alt="Mesa de abertura institucional do evento" loading="lazy">
+              <p class="entry-description">A mesa-redonda, com a participação de Adriana Pesca, Raíza Canuta e Jéssica Tailane, nos proporcionou um momento de reflexão sobre o protagonismo das mulheres negras e indígenas na sociedade. A presença de mulheres de diferentes áreas de atuação, como a ciência, a educação, a literatura e as artes plásticas, nos fez perceber as diversas maneiras pelas quais elas contribuem para a produção do conhecimento e a transformação da vida em comunidade.</p>
+
+              <!-- Conteúdo completo da reflexão: exibido pelo botão abaixo. -->
+              <div class="entry-more" id="reflexao-5">
+                <p class="entry-description">Um dos aspectos mais interessantes desse momento foi compreender a ancestralidade não apenas como uma ligação com o passado, mas como algo que permanece vivo nos conhecimentos, nas manifestações culturais e nas lutas do presente. É perceber que muitas das conquistas atuais são frutos de caminhos construídos por mulheres de outras gerações, cujas histórias nem sempre receberam o devido reconhecimento.
+
+Essa discussão nos remete à obra Becos da Memória, de Conceição Evaristo, especialmente à trajetória de Maria-Nova. Em determinado momento do romance, a personagem, ao estudar a escravidão na escola, percebe a distância entre a história apresentada nos livros didáticos e as experiências das pessoas de sua comunidade. Surge, então, o desejo de narrar essas histórias, preservando memórias que poderiam ser esquecidas ou silenciadas.
+
+Ao relacionarmos essa passagem com a proposta da mesa-redonda, conseguimos perceber que a presença de mulheres negras e indígenas nas artes, na literatura e na ciência representa muito mais do que uma conquista de espaço. Representa também a possibilidade de produzir conhecimentos a partir de suas próprias experiências e de assumir a autoria de suas histórias.
+
+Isso nos fez pensar sobre quantas contribuições científicas, manifestações artísticas e experiências humanas desconhecemos simplesmente porque determinadas vozes não receberam a mesma atenção ao longo da história. Afinal, existe uma diferença profunda entre ter sua história contada por outras pessoas e possuir a liberdade de contá-la com a própria voz.
+
+Entretanto, também consideramos importante não romantizar a resistência dessas mulheres. Ao mesmo tempo que admiramos sua força e determinação, precisamos questionar as circunstâncias que constantemente exigem delas tamanha resistência. Reconhecer suas conquistas não significa naturalizar as dificuldades que precisaram enfrentar.
+
+Outro aprendizado desse momento foi perceber que a atuação política não se limita aos espaços governamentais. Ela também pode acontecer na produção de uma obra artística, no desenvolvimento de uma pesquisa, na transmissão de conhecimentos ancestrais e na preservação das tradições de uma comunidade.
+
+Ao final, essa experiência nos deixou uma reflexão: precisamos aprender a enxergar essas mulheres para além das injustiças que enfrentaram. Suas existências não se resumem à luta, mas também são constituídas por sonhos, inteligência, criatividade, afetos e realizações.
+
+Valorizar o protagonismo dessas mulheres é reconhecê-las não apenas como personagens de uma história de resistência, mas como autoras de seus próprios caminhos e produtoras do conhecimento que transforma nossa sociedade.</p>
+              <!-- FOTO DO REGISTRO: substitua o caminho abaixo pela imagem desejada. -->
+              <div class="entry-footer">
+            
+              </div>
+              </div>
+
+              <!-- Controle individual de leitura. -->
+              <button type="button" class="button button-outline entry-toggle"
+                      aria-controls="reflexao-5" aria-expanded="true" hidden>
+                Exibir menos ↑
+              </button>
+            </article>
+ <!-- ================================================= -->
+
+  <!-- ================================================= -->
+            <article class="entry">
+              <p class="entry-date">18 NOVEMBRO 2026 · QUARTA-FEIRA</p>
+              <h3>Escrevivências</h3>
+              <span class="tag">Reflexão</span>
+              <img class="entry-image" src="image/escrevivencia.jfif" alt="Mesa de abertura institucional do evento" loading="lazy">
+              <p class="entry-description">A exposição das Escrevivências, desenvolvida pelos estudantes do curso de Informática, nos proporcionou um momento de aproximação com diferentes histórias, memórias e realidades. Por meio de textos, poesias, relatos e produções artísticas, tivemos a oportunidade de conhecer outras dimensões das pessoas com quem compartilhamos diariamente o ambiente escolar.</p>
+
+              <!-- Conteúdo completo da reflexão: exibido pelo botão abaixo. -->
+              <div class="entry-more" id="reflexao-6">
+                <p class="entry-description">Essa atividade está diretamente relacionada ao conceito de escrevivência, desenvolvido pela escritora Conceição Evaristo, que compreende a escrita a partir das experiências vividas, especialmente aquelas marcadas pela identidade, pela ancestralidade e pela memória coletiva. Nessa perspectiva, escrever não significa apenas organizar palavras, mas também expressar aquilo que nos constitui enquanto indivíduos e enquanto parte de uma sociedade.
+
+O que torna essa exposição interessante é justamente a possibilidade de encontrar significado em acontecimentos aparentemente comuns. Uma lembrança da infância, uma tradição familiar, uma experiência religiosa ou até mesmo uma situação cotidiana pode carregar reflexões profundas sobre nossa identidade e nossa maneira de compreender o mundo.
+
+Também nos fez pensar sobre como convivemos com tantas pessoas sem necessariamente conhecermos suas histórias. Compartilhamos salas de aula, corredores e momentos de descontração, mas pouco sabemos sobre as experiências que moldaram a personalidade, os sentimentos e as perspectivas daqueles que estão ao nosso lado. A escrita, nesse contexto, tornou-se uma oportunidade de aproximação humana.
+
+Outro aspecto importante foi perceber a relação entre a liberdade de expressão e a construção da identidade. Quando pessoas historicamente silenciadas encontram espaços para compartilhar suas experiências, elas passam a participar mais diretamente da construção da memória coletiva, revelando perspectivas que poderiam permanecer desconhecidas.
+
+É interessante, ainda, que essa atividade tenha sido desenvolvida por estudantes de um curso predominantemente tecnológico. Isso nos fez refletir sobre a importância de uma formação que não se restrinja aos conhecimentos técnicos, mas que também desenvolva nossa sensibilidade, criatividade e capacidade de compreender diferentes realidades. Antes de sermos futuros profissionais, somos indivíduos constituídos por histórias, sentimentos e relações humanas.
+
+Por fim, a exposição nos convidou a reconhecer o valor da nossa própria trajetória. Muitas vezes, acreditamos que precisamos viver acontecimentos extraordinários para termos algo relevante a contar, quando, na verdade, são as pequenas experiências do cotidiano que ajudam a construir aquilo que somos.
+
+Talvez a beleza da escrevivência esteja justamente nisso: transformar aquilo que consideramos comum em algo digno de ser lembrado, compartilhado e compreendido. Afinal, nenhuma história é pequena quando carregamos nela parte da nossa existência.</p>
+              <!-- FOTO DO REGISTRO: substitua o caminho abaixo pela imagem desejada. -->
+              <div class="entry-footer">
+  
+              </div>
+              </div>
+
+              <!-- Controle individual de leitura. -->
+              <button type="button" class="button button-outline entry-toggle"
+                      aria-controls="reflexao-6" aria-expanded="true" hidden>
+                Exibir menos ↑
+              </button>
+            </article>
+ <!-- ================================================= -->
+
+          </div>
+          <div class="entries-actions">
+            <button type="button" id="load-more" class="button button-outline">Ver registro anterior ↓</button>
+          </div>
+        </section>
+
+        <!-- =================================================
+             4. REFLEXÕES: texto de encerramento.
+             ================================================= -->
+        <section id="reflexoes" class="reflection-section">
+          <p class="eyebrow">PARA REFLETIR</p>
+          <h2>Memória, identidade e futuro.</h2>
+          <p class="lead">Reconhecer a história e a cultura negra é também revisitar nossa própria maneira de compreender o mundo. Quantas memórias, saberes e experiências permanecem invisíveis simplesmente porque não aprendemos a valorizá-los? A ancestralidade, a arte, a educação e as manifestações culturais nos revelam que a identidade de um povo é construída por histórias que resistem ao tempo e ao esquecimento. Nesse sentido, respeitar a diversidade implica repensar nossas relações, nossos olhares e as desigualdades que, muitas vezes, naturalizamos no cotidiano.</p>
+          <div class="reflection-stripe" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- =====================================================
+       5. FORMULÁRIO MODAL: campos do botão "Novo registro".
+       O comportamento é controlado no script.js.
+       ===================================================== -->
+  <div class="modal-backdrop" id="modal-backdrop" hidden>
+    <form class="modal" id="entry-form">
+      <p class="eyebrow">REGISTRAR MEMÓRIA</p>
+      <h2>Novo registro</h2>
+      <label for="entry-title">Título</label>
+      <input id="entry-title" name="title" required maxlength="120" placeholder="O que aconteceu?">
+      <label for="entry-date">Data</label>
+      <input id="entry-date" name="date" type="date" required value="2026-11-20">
+      <label for="entry-category">Categoria</label>
+      <select id="entry-category" name="category">
+        <option>Reflexão</option>
+        <option>Cultura afro-brasileira</option>
+        <option>História</option>
+        <option>Atividade</option>
+      </select>
+      <label for="entry-description">Suas anotações</label>
+      <textarea id="entry-description" name="description" rows="5" required placeholder="Registre sua experiência..."></textarea>
+      <div class="form-actions">
+        <button class="button button-outline" type="button" id="cancel-entry">Cancelar</button>
+        <button class="button button-primary" type="submit">Salvar registro</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Controle independente das seis reflexões; não altera o script.js original. -->
+  <script>
+    document.querySelectorAll('.entry-toggle').forEach((botao) => {
+      const conteudo = document.getElementById(botao.getAttribute('aria-controls'));
+      if (!conteudo) return;
+
+      // Começa recolhido, mantendo o primeiro parágrafo e a foto de capa.
+      function atualizar(aberto) {
+        conteudo.hidden = !aberto;
+        botao.setAttribute('aria-expanded', String(aberto));
+        botao.textContent = aberto ? 'Exibir menos ↑' : 'Exibir mais ↓';
+      }
+
+      atualizar(false);
+      botao.hidden = false;
+
+      botao.addEventListener('click', () => {
+        const aberto = botao.getAttribute('aria-expanded') === 'true';
+        atualizar(!aberto);
+        // Ao recolher um texto longo, retorna ao início do próprio evento.
+        if (aberto) botao.closest('.entry').scrollIntoView({ block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
